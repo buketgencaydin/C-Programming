@@ -10,74 +10,72 @@ int main()
 	printf("Enter an integer: ");
 	scanf("%d",&n);
 
-    printf("Please enter '0' for sum, '1' for multiplication\n");
+    	printf("Please enter '0' for sum, '1' for multiplication\n");
 	scanf("%d",&op);
 
 	switch(op)
 	{
 		case 0:
-		printf("Please enter '0' to work on even numbers, '1' to work on odd numbers\n");
-	    scanf("%d",&flag);
+		    printf("Please enter '0' to work on even numbers, '1' to work on odd numbers\n");
+		    scanf("%d",&flag);
 
 		    switch(flag)
 		    {
 		    	case 0:
-					printf("2 + ");
-					for(i=4 ; i<n ; i=i+2)
-					{
-						printf("%d + ",i);
-					}
-					printf("%d = %d\n",i,sum(i, flag));
-					break;
+			    printf("2 + ");
+			    for(i=4 ; i<n ; i=i+2)
+			    {
+				printf("%d + ",i);
+			    }
+			    printf("%d = %d\n",i,sum(i, flag));
+			    break;
 
 		    	case 1:
-					printf("1 + ");
-					for(i=3 ; i<n ; i=i+2)
-					{
-						printf("%d + ",i);
-					}
-					printf("%d = %d\n",i,sum(i, flag));
-					break;
+			    printf("1 + ");
+			    for(i=3 ; i<n ; i=i+2)
+			    {
+				printf("%d + ",i);
+			    }
+			    printf("%d = %d\n",i,sum(i, flag));
+			    break;
 
 		    	default:
-		    		printf("Invalid value for odd/even selection.\n");
+		    	    printf("Invalid value for odd/even selection.\n");
 		    }
-		  	break;
-
+		    break;
 		case 1:
-			printf("Please enter '0' to work on even numbers, '1' to work on odd numbers\n");
-			scanf("%d",&flag);
+		    printf("Please enter '0' to work on even numbers, '1' to work on odd numbers\n");
+		    scanf("%d",&flag);
 
-				switch(flag)
-				{
-					case 0:
-						printf("2 * ");
-						for(i=4 ; i<n ; i=i+2)
-						{
-							printf("%d * ",i);
-						}
-						printf("%d = %d\n",i,mult(i, flag));
-						break;
+		    switch(flag)
+		    {
+			case 0:
+			    printf("2 * ");
+			    for(i=4 ; i<n ; i=i+2)
+			    {
+				printf("%d * ",i);
+			    }
+		            printf("%d = %d\n",i,mult(i, flag));
+			    break;
+			case 1:
+			    printf("1 * ");
+			    for(i=3 ; i<n ; i=i+2)
+			    {
+				printf("%d * ",i);
+			    }
+			    printf("%d = %d\n",i,mult(i, flag));
+			    break;
 
-					case 1:
-						printf("1 * ");
-						for(i=3 ; i<n ; i=i+2)
-						{
-							printf("%d * ",i);
-						}
-						printf("%d = %d\n",i,mult(i, flag));
-						break;
-
-					default:
-						printf("Invalid value for odd/even selection.\n");
-				}
-			break;
+			default:
+			    printf("Invalid value for odd/even selection.\n");
+		    }
+	            break;
 
 		default:
-			printf("Please enter '0' to work on even numbers, '1' to work on odd numbers\n");
-			scanf("%d",&flag);
+		    printf("Please enter '0' to work on even numbers, '1' to work on odd numbers\n");
+		    scanf("%d",&flag);
 
-			printf("Unsupported operation.\n");
+		    printf("Unsupported operation.\n");
 	}
 	return 0;
 }
