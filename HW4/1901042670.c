@@ -60,7 +60,6 @@ void menu()
 		}
 
 	}while(choice != 5);
-
 }
 void decrypt_and_print(char* file_path)
 {
@@ -69,24 +68,23 @@ void decrypt_and_print(char* file_path)
 
 	FILE *fp = fopen(file_path,"r");
 
-    while(fscanf(fp,"%c",&number) != EOF)
-    {
-    	if(number=='\n')
+        while(fscanf(fp,"%c",&number) != EOF)
         {
-        	printf("\n");
-        }
-        
-        else
-        {
-        	number== (int)number; /* transforming a character to a integer */
-	    	number -= 48;
-	    	
-	    	printf("%c",decrypt_numbers(number));
+	    if(number=='\n')
+	    {
+		printf("\n");
 	    }
-    }
-    fclose(fp);
-}
 
+	    else
+	    {
+		number = (int)number; /* transforming a character to a integer */
+		number -= 48;
+
+		printf("%c",decrypt_numbers(number));
+	    }
+        }
+        fclose(fp);
+}
 char decrypt_numbers(int number)
 {
 	char message;
@@ -95,7 +93,7 @@ char decrypt_numbers(int number)
 	{
 		case 0:
 		message=' ' ;
-        break;
+       		break;
 
 		case 1:
 		message='-';
@@ -119,7 +117,7 @@ char decrypt_numbers(int number)
 		
 		case 6:
 		message='O';
-        break;
+        	break;
 
 	}
 	return message;
@@ -132,76 +130,72 @@ void deep_decrypt_and_print(char* file_path)
 	FILE *fp = fopen(file_path,"r");
 
 	/*
-				if a line begins with 34215... --> first step = 342 --> 9 % 7
-										       		second step = 421 --> 7 % 7
-										        		third step = 215  --> 8 % 7 
-										           			and so on...
+		if a line begins with 34215... --> first step = 342 --> 9 % 7
+							second step = 421 --> 7 % 7
+								third step = 215  --> 8 % 7 
+									and so on...
 
-				if a line ends with ...6421, last steps --> 642 --> 12 % 7
-															 421 --> 7 % 7
-															  210 --> 3 % 10 
-															  	100 --> 1 % 10
+		if a line ends with ...6421, last steps --> 642 --> 12 % 7
+								 421 --> 7 % 7
+								   210 --> 3 % 10 
+								     100 --> 1 % 10
 	*/
 
-	
-
-
 	for(i=0;i<=2;i++)   // addition of first three number in the first line             
-		{
-			fscanf(fp,"%c",&number);
-	    	number == (int)number;
-			number -= 48;
-			sum += (int)number;
-		}
-	x=sum%7;
+	{
+		fscanf(fp,"%c",&number);
+		number = (int)number;
+		number -= 48;
+		sum += (int)number;
+	}
+	x = sum % 7;
 	printf(" %c",decrypt_numbers(x));
-
-    sum=0;
+	sum=0;
 	       
  	while(fscanf(fp,"%c",&number) != EOF)
-	    { 
-	    	fseek(fp,-3,SEEK_CUR);
+        { 
+		fseek(fp,-3,SEEK_CUR);
 
-	        for(j=0 ; j<=2 ; j++)
-		    {
-		        	fscanf(fp,"%c",&number);
-		        	if(number=='\n')
-		        	{
-		        		if(j==2)        
-		        		{
-		        			printf("\n");
-		        			
-		        			for(i=0;i<=2;i++)
-							{
-								fscanf(fp,"%c",&number);
-						    	number == (int)number;
-								number -= 48;
-								sum += (int)number;
-							}
-							x=sum%7;
-							printf("%c",decrypt_numbers(x));
-							sum=0;
-						}
-						else if(j==1)
-				        {
-				        	fscanf(fp,"%c",&number);
-				        	number== (int)number;
-						    number -= 48;
-						    sum -= (int)number;
-						    fseek(fp,-2,SEEK_CUR);
-				        }
-		        	}
-		        	else if(number!='\n')
-		        	{
-			        	number== (int)number;
-				    	number -= 48;
-				    	sum += (int)number;
-			    	}
-		    }
-		    x=sum%7;
-		    printf("%c",decrypt_numbers(x));
-		    sum=0;
+		for(j=0 ; j<=2 ; j++)
+	     	{
+			fscanf(fp,"%c",&number);
+			if(number=='\n')
+			{
+				if(j==2)        
+				{
+					printf("\n");
+
+					for(i=0;i<=2;i++)
+					{
+						fscanf(fp,"%c",&number);
+						number = (int)number;
+						number -= 48;
+						sum += (int)number;
+					}
+					x = sum % 7;
+					printf("%c",decrypt_numbers(x));
+					sum=0;
+				}
+				else if(j==1)
+				{
+					fscanf(fp,"%c",&number);
+					number = (int)number;
+					number -= 48;
+				        sum -= (int)number;
+				        fseek(fp,-2,SEEK_CUR);
+				}
+		        }
+			else if(number!='\n')
+			{
+				number = (int)number;
+				number -= 48;
+				sum += (int)number;
+			}
 		}
+		x = sum % 7;
+		printf("%c",decrypt_numbers(x));
+		sum=0;
+	}
 	fclose(fp);
 }
 void track_machine()
@@ -214,36 +208,26 @@ void track_machine()
 	Y=0;
 	
 	do
-    {
-	    refresh_position(&X, &Y, &D, &R);
+    	{
+	    	refresh_position(&X, &Y, &D, &R);
 		
 		for(i=1;i<=11;i++)
 		{
 			for(j=1;j<=11;j++)
 			{
-				if(i==6 && j==6)
-				{
-					printf("O\t");
-				}
-				else if(i==X && j==Y)
-				{
-					printf("E\t");
-				}
-				else
-				{
-					printf(".\t");
-				}
+				if(i==6 && j==6) printf("O\t");
+				else if(i==X && j==Y) printf("E\t");
+				else printf(".\t");
 			}
 			printf("\n");
 		}
-
 		printf("Enemies X position: %d, Y position: %d, Displacement: %lf, Distance to our camp: %lf\n",X,Y,R,D);
 		
 		printf("Command waiting...:");
 		scanf(" %c",&com);
 	
-	} while(com=='R' && com!='E'); /* works until the operator gives ‘E’ command to machine and 
-								     it refreshes the view of screen on each ‘R’ command */
+	}while(com=='R' && com!='E'); /* works until the operator gives ‘E’ command to machine and 
+					 it refreshes the view of screen on each ‘R’ command */
 }
 void refresh_position(int *X, int *Y, double *D, double *R)
 {
@@ -310,32 +294,27 @@ void encrypt_messages (char* file_path)
 				sum += num;
 				x = sum % 7;
 				fprintf(fp2,"%d",x);
-				
 			}
 			if(flag != 0 && flag != 1)
 			{
 				fseek(fp,-3,SEEK_CUR);
 				
 				for(i=0;i<=2;i++)
-						{
-							fscanf(fp,"%c",&character);
-							num=encrypt_characters(character);
-							sum += num;
-					    }
-					    x=sum%7;
-						fprintf(fp2,"%d",x);
-					
-
-					    sum=0;
+				{
+					fscanf(fp,"%c",&character);
+					num=encrypt_characters(character);
+					sum += num;
+				}
+			    	x = sum % 7;
+				fprintf(fp2,"%d",x);
+				sum=0;
 			}
 			flag++;
-			
 		}
 	}
 	fclose(fp);
 	fclose(fp2);
 }
-
 int encrypt_characters(char character)
 {
 	int message;
@@ -344,7 +323,7 @@ int encrypt_characters(char character)
 	{
 		case ' ':
 		message=0 ;
-        break;
+        	break;
 
 		case '-':
 		message=1;
@@ -368,7 +347,7 @@ int encrypt_characters(char character)
 		
 		case 'O':
 		message=6;
-        break;
-    }
+        	break;
+	}
 	return message;
 }   
