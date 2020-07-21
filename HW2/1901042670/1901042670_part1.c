@@ -1,7 +1,7 @@
 /*  Since math.h library was used in the code, compile and run procedure need to be done like below :
     $ gcc -c 1901042670_part1.c 
-	$ gcc 1901042670_part1.o -o 1901042670_part1 -lm
-	$ ./1901042670_part1
+    $ gcc 1901042670_part1.o -o 1901042670_part1 -lm
+    $ ./1901042670_part1
 */
 
 #include <stdio.h> /* standard input/output definitions */
@@ -27,7 +27,7 @@ int main()
 
 	if(draw_triangle(side1, side2, side3) == 1)
 	{
-		printf("\nAccording to the triangle inequality theorem, this triangle can be drawn.\n\n");
+	    printf("\nAccording to the triangle inequality theorem, this triangle can be drawn.\n\n");
 
 	    type_triangle(side1, side2, side3);
 
@@ -39,29 +39,20 @@ int main()
 				
 	}
 	else if(draw_triangle(side1, side2, side3) == 0)
-    {
+    	{
 		printf("According to the triangle inequality theorem, this triangle cannot be drawn.\n");
 	}
 }
-
-
 int draw_triangle(int side1, int side2, int side3)
 {
 	/*
 	  the triangle inequality theorem states that the sum of any 2 sides of a triangle 
 	  must be greater than the measure of the third side
-    */ 
+        */ 
 			
-	if((side1+side2) > side3 && (side2+side3) > side1 && (side1+side3) > side2)
-	{
-		return 1;
-	}
-	else
-	{
-		return 0;
-	}
+	if((side1+side2) > side3 && (side2+side3) > side1 && (side1+side3) > side2) return 1;
+	else return 0;
 }
-
 void type_triangle(int side1, int side2, int side3)
 {
 	if(side1 == side2 && side1 == side2 && side2 == side3)
@@ -72,12 +63,8 @@ void type_triangle(int side1, int side2, int side3)
 	{
 		printf("It is an Isosceles Triangle\n");
 	}
-	else
-	{
-		printf("It is a Scalene Triangle\n");
-	}
+	else printf("It is a Scalene Triangle\n");
 }
-
 int perimeter_triangle(int side1, int side2, int side3)
 {
 	return (side1 + side2 + side3);
@@ -89,7 +76,7 @@ double area_triangle(int side1, int side2, int side3, int perimeter)
 	
 	p = perimeter / 2.0;
 	area = sqrt(p*(p-side1)*(p-side2)*(p-side3));
-
+	
 	return area;
 }
 
