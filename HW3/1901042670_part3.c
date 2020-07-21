@@ -7,7 +7,6 @@ int power(int base, int num);
 
 int main()
 {
-
 	int a, b, div ,len_a=0, len_b=0, bin_a, bin_b, count=0;
 	
 	do
