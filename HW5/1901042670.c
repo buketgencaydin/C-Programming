@@ -18,7 +18,7 @@ void menu()
 {
 	char buffer[500], file_path[11], buffer_magic[10], buffer_news[500];
 	int is_Only_Title, choice2, choice3, i=0;
-    char choice1, choice4, read;
+    	char choice1, choice4, read;
 	
 	do
 	{
@@ -62,24 +62,24 @@ void menu()
 				{
 					case 1:
 					read_news(buffer, "news/1.txt", 0);
-	             	append_file("readed_news_id.txt", '1');
-	             	break;
+					append_file("readed_news_id.txt", '1');
+					break;
 
-	             	case 2:
+					case 2:
 					read_news(buffer, "news/2.txt", 0);
-	             	append_file("readed_news_id.txt", '2');
-	             	break;
+					append_file("readed_news_id.txt", '2');
+					break;
 
-	             	case 3:
+					case 3:
 					read_news(buffer, "news/3.txt", 0);
-	             	append_file("readed_news_id.txt", '3');
-	             	break;
+					append_file("readed_news_id.txt", '3');
+					break;
 
-	             	case 4:
+					case 4:
 					read_news(buffer, "news/4.txt", 0);
-	             	append_file("readed_news_id.txt", '4');
-	             	break;
-	            }
+					append_file("readed_news_id.txt", '4');
+					break;
+				}
 			}
 			break;
 			
@@ -95,7 +95,6 @@ void menu()
 		scanf(" %c", &choice4);
 
 	}while(choice4 == 'y' && choice4 != 'n');
-
 	printf("Good Bye!\n");
 }
 void read_news(char buffer[500], char file_path[11], int is_Only_Title)
@@ -136,10 +135,7 @@ int readed_or_not(int text_num)
 
 	while(fscanf(fp, "%c", &read) != EOF)
 	{
-		if((int)read - 48 == text_num) 
-		{
-			count++;
-		} 
+		if((int)read - 48 == text_num) count++;
 	}
 	if(count == 0) return 0; /* if count is 0, it means that user never read that text before */
 
@@ -202,7 +198,6 @@ void read_magic_numbers(char buffer_magic[10], char buffer_news[500])
 	switch(dec)
 	{
 		case 1:
-		
 		while(fscanf(fp1, "%c", &buffer_news[i]) != EOF)
 		{
 			printf("%c", buffer_news[i]);
@@ -230,11 +225,9 @@ void read_magic_numbers(char buffer_magic[10], char buffer_news[500])
 		printf("\n");
 
 		fclose(fp1);
-
 		break;
 
 		case 2:
-		
 		while(fscanf(fp2, "%c", &buffer_news[i]) != EOF)
 		{
 			printf("%c", buffer_news[i]);
@@ -262,11 +255,9 @@ void read_magic_numbers(char buffer_magic[10], char buffer_news[500])
 		printf("\n");
 
 		fclose(fp2);
-
 		break;
 
 		case 3:
-		
 		while(fscanf(fp3, "%c", &buffer_news[i]) != EOF)
 		{
 			printf("%c", buffer_news[i]);
@@ -294,11 +285,9 @@ void read_magic_numbers(char buffer_magic[10], char buffer_news[500])
 		printf("\n");
 
 		fclose(fp3);
-
 		break;
 
 		case 4:
-		
 		while(fscanf(fp4, "%c", &buffer_news[i]) != EOF)
 		{
 			printf("%c", buffer_news[i]);
@@ -326,7 +315,6 @@ void read_magic_numbers(char buffer_magic[10], char buffer_news[500])
 		printf("\n");
 
 		fclose(fp4);
-
 		break;
 
 	}
