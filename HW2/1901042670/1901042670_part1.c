@@ -1,7 +1,8 @@
-/*  Since math.h library was used in the code, compile and run procedure need to be done like below :
-    $ gcc -c 1901042670_part1.c 
-    $ gcc 1901042670_part1.o -o 1901042670_part1 -lm
-    $ ./1901042670_part1
+/*  
+Since math.h library was used in the code, compile and run procedure need to be done like below :
+$ gcc -c 1901042670_part1.c 
+$ gcc 1901042670_part1.o -o 1901042670_part1 -lm
+$ ./1901042670_part1
 */
 
 #include <stdio.h> /* standard input/output definitions */
@@ -69,7 +70,6 @@ int perimeter_triangle(int side1, int side2, int side3)
 {
 	return (side1 + side2 + side3);
 }
-
 double area_triangle(int side1, int side2, int side3, int perimeter)
 {
 	double p,area;
