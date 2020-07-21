@@ -1,7 +1,8 @@
-/*  Since math.h library was used in the code, compile and run procedure need to be done like below :
-    $ gcc -c 1901042670_part1.c 
-	$ gcc 1901042670_part1.o -o 1901042670_part1 -lm
-	$ ./1901042670_part1
+/*  
+Since math.h library was used in the code, compile and run procedure need to be done like below :
+$ gcc -c 1901042670_part1.c 
+$ gcc 1901042670_part1.o -o 1901042670_part1 -lm
+$ ./1901042670_part1
 */
 
 #include <stdio.h> /* standard input/output definitions */
@@ -9,7 +10,6 @@
 
 int number_length(int number); /* finds the length of the number entered by the user */
 int find_digit(int number, int index); /* finds the number in the index entered by the user */
-
 
 int main()
 {
@@ -26,12 +26,10 @@ int main()
 
 	return 0;
 }
-
 int number_length(int number)
 {
 	return (int)(log10((double)number) + 1);
 }
-
 int find_digit(int number, int index)
 {
 	int a, b, mod, length;
@@ -46,9 +44,9 @@ int find_digit(int number, int index)
 		a = number / pow(base,(double)(length-mod));
 		b = a % 10 ;
 		return b;
-    }
-    else /* this part works when the user wants to see the last digit of the number according to the index mod length */
-    {
-    	return number % 10;  
-    }
+  	}
+   	else /* this part works when the user wants to see the last digit of the number according to the index mod length */
+   	{
+    		return number % 10;  
+    	}
 }
