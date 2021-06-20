@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="records">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="row"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="row">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="name"/>
+        <xs:element ref="surname"/>
+        <xs:element ref="gender"/>
+        <xs:element ref="email"/>
+        <xs:element ref="phone_number"/>
+        <xs:element ref="address"/>
+        <xs:element ref="level_of_education"/>
+        <xs:element ref="income_level"/>
+        <xs:element ref="expenditure"/>
+        <xs:element ref="currency_unit"/>
+        <xs:element ref="currentMood"/>
+        <xs:element ref="height"/>
+        <xs:element ref="weight"/>
+      </xs:sequence>
+      <xs:attribute name="id" use="required" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="name" type="xs:string"/>
+  <xs:element name="surname" type="xs:NCName"/>
+  <xs:element name="gender" type="xs:NCName"/>
+  <xs:element name="email" type="xs:string"/>
+  <xs:element name="phone_number" type="xs:NMTOKEN"/>
+  <xs:element name="address" type="xs:string"/>
+  <xs:element name="level_of_education" type="xs:NCName"/>
+  <xs:element name="income_level">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:integer">
+          <xs:attribute name="bigEnd" use="required" type="xs:integer"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="expenditure">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:integer">
+          <xs:attribute name="bigEnd" use="required" type="xs:integer"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="currency_unit" type="xs:string"/>
+  <xs:element name="currentMood" type="xs:string"/>
+  <xs:element name="height" type="xs:decimal"/>
+  <xs:element name="weight" type="xs:integer"/>
+</xs:schema>
